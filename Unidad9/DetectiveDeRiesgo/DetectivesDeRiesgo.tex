@@ -1,0 +1,62 @@
+% Documento: Tabla para la actividad "Detectives de Riesgo"
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{makecell}
+\usepackage{pdflscape}
+\geometry{margin=1cm}
+
+\begin{document}
+
+\begin{landscape}
+
+\begin{center}
+	{\LARGE \textbf{Detectives de Riesgo}}\\[6pt]
+	{\small Tabla: Matriz rápida de riesgos (sin soluciones)}\\[8pt]
+	{\footnotesize \textbf{Integrantes:} Cristian Camilo Pérez, Karen Duarte, Eric Santiago Baquero}
+\end{center}
+
+\vspace{8pt}
+
+% Tabla de la actividad: 5 filas vacías para que los estudiantes completen
+\renewcommand{\arraystretch}{1.35}
+\begin{longtable}{@{}p{0.20\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.25\textwidth}@{}}
+\toprule
+\makecell{\textbf{Riesgo} \\ \textbf{identificado}} & \makecell{\textbf{Probabilidad}} & \makecell{\textbf{Impacto}} & \makecell{\textbf{Nivel de} \\ \textbf{riesgo}} & \makecell{\textbf{Medida} \\ \textbf{preventiva}}\\
+\midrule
+\endfirsthead
+\toprule
+\makecell{\textbf{Riesgo} \\ \textbf{identificado}} & \makecell{\textbf{Probabilidad}} & \makecell{\textbf{Impacto}} & \makecell{\textbf{Nivel de} \\ \textbf{riesgo}} & \makecell{\textbf{Medida} \\ \textbf{preventiva}}\\
+\midrule
+\endhead
+% Filas vacías para completar
+Phishing & Alta & Alta & Crítico & Capacitar personal para no accedan o descarguen archivos de orígenes desconocidos y aplicar MFA \\
+\addlinespace
+Malware & Medio & Alta & Alto & No introducir USB a los equipos corporativos, restringir la navegación \\
+\addlinespace
+Mishing & Alto & Medio & Alto & Restringir el uso de celulares personales para usos corporativo, con el uso de herramientas corporativas que impidan el acceso a recursos empresariales y solo de dispositivos autorizados \\
+\addlinespace
+Contraseña débil en servidor y correo electrónico & Bajo & Alto & Medio & Mejorar y reforzar las contraseñas de los usuarios y servidores, tener políticas de contraseñas fuertes \\
+\addlinespace
+Pérdida / Robo de información y de celulares & Media & Alta & Alto & Realizar respaldos semanales del servidor \\
+\addlinespace
+\bottomrule
+\end{longtable}
+
+\vspace{10pt}
+
+% Análisis del riesgo más importante
+\noindent\textbf{Análisis del riesgo más importante:}\\[6pt]
+\noindent El riesgo más importante es el Phishing ya que cuenta con un nivel de riesgo Crítico y probabilidad es muy alta ya que el gerente ha observado ataques de phishing\\[6pt]
+\noindent \textbf{Acción para reducirlo:} La acción para reducirlo podría ser capacitar personal para no accedan o descarguen archivos de orígenes desconocidos y aplicar MFA
+
+\end{landscape}
+
+\end{document}
+

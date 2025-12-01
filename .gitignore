@@ -1,0 +1,51 @@
+# Archivos auxiliares de LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+
+# Archivos temporales de Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Archivos temporales de sistema
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Carpetas de sistema
+.DS_Store
+
+# PDFs grandes (más de 10MB generalmente)
+# Los PDFs pequeños sí se incluyen
+
+# Archivos de Office temporales
+~$*
+*.~*
+
+# Node modules (si hay)
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos de backup
+*.bak
+*.backup

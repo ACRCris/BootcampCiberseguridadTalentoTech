@@ -1,0 +1,81 @@
+AVISO: Todos los datos de este archivo son FALSOS y generados para prácticas de seguridad/cifrado.
+No corresponden a personas reales ni a cuentas operativas.
+
+--- IDENTIDADES (FICTICIAS) ---
+ID: P-0001 | Nombre: Lucía Martínez Gómez | DNI: 73168245Q | Nacimiento: 14/02/1994 | Email: lucia.martinez@example.com | Tel: +34 678 231 904 | Dirección: C/ Alcalá 152, 5ºB, 28028 Madrid
+ID: P-0002 | Nombre: Javier Ortega Ríos | DNI: 49281736M | Nacimiento: 29/07/1988 | Email: j.ortega@example.net | Tel: +34 612 443 099 | Dirección: Av. Diagonal 412, 2ºA, 08037 Barcelona
+ID: P-0003 | Nombre: Sara Núñez Pérez | DNI: 10594372L | Nacimiento: 03/11/1996 | Email: sara.nunez@example.org | Tel: +34 699 114 522 | Dirección: C/ Gran Vía 10, 4ºC, 28013 Madrid
+ID: P-0004 | Nombre: Diego Campos Vidal | DNI: 86420951S | Nacimiento: 21/05/1991 | Email: d.campos@example.com | Tel: +34 634 228 761 | Dirección: C/ Colón 24, 3ºD, 46004 Valencia
+ID: P-0005 | Nombre: Elena Cabrera Ruiz | DNI: 25741896T | Nacimiento: 09/09/1983 | Email: elena.cabrera@example.net | Tel: +34 671 503 287 | Dirección: Pza. Mayor 7, 1ºA, 09003 Burgos
+
+--- NÚMEROS (FICTICIOS) DE SEGURIDAD SOCIAL / PASAPORTE ---
+NSS: 08 12345678 12 | Pasaporte: XG1234567
+NSS: 28 98765432 07 | Pasaporte: LZ7654321
+NSS: 47 56473829 33 | Pasaporte: MV4527819
+
+--- BANCOS (IBAN FICTICIOS) ---
+Cuenta 1 | Titular: Lucía Martínez Gómez | IBAN: ES38 2100 0422 4502 0034 1234 | BIC: CAIXESBBXXX
+Cuenta 2 | Titular: Javier Ortega Ríos | IBAN: ES20 1465 2301 9012 3456 7890 | BIC: BBVAESMMXXX
+Cuenta 3 | Titular: Sara Núñez Pérez   | IBAN: ES91 0049 1500 1234 5678 9012 | BIC: BSCHESMMXXX
+
+--- TARJETAS (FICTICIAS) ---
+VISA    | Titular: L. Martínez | PAN: 4929 1234 5678 9012 | CAD: 11/27 | CVV: 274
+MASTERC | Titular: J. Ortega   | PAN: 5222 7389 1234 5678 | CAD: 05/28 | CVC: 803
+AMEX    | Titular: S. Núñez    | PAN: 3719 463512 34567  | CAD: 03/29 | CID: 1098
+
+--- CREDENCIALES (NO REALES) ---
+usuario: lucia.mg | contraseña: R4n0-tigre!82
+usuario: jortega  | contraseña: Mang0_Seguro#55
+usuario: sara.n   | contraseña: Luna.Verde_4096
+usuario: dcampos  | contraseña: b!zcocho-Estelar-7
+usuario: elena.cr | contraseña: Viento$Azul_2025
+
+--- HASHES DE CONTRASEÑAS (FICTICIOS) ---
+u=lucia.mg | salt=7f2a9c13 | sha256=9a9ce1e87a902b61dca8d17c1a02b6b05d7a0d1286b1a6f9a3e017e6ad0b9f1a
+u=jortega  | salt=3bd45e80 | sha256=3f8d0fbe4da7a8a989a0b8f0d3b3a111db65785e9a63a7b9a13db98f1aa4d7d2
+u=sara.n   | salt=c1d0aa5f | sha256=0b7d0bc75d26a3b5b2d0e2c6f98a5c7b2b6c8d2f1e3a5b7c9d0e1f2a3b4c5d6e
+u=dcampos  | salt=5a9e1142 | sha256=91c5e0b2a1d9e3f4b5c6d7e8f9a0b1c2d3e4f596a7b8c9d0e1f2a3b4c5d6e7f8
+u=elena.cr | salt=9ce4a2d1 | sha256=2f6b1a9c0e4d5f6a7b8c9d0e1f2a3b4c5d6e7f8091a2b3c4d5e6f7a8b9c0d1e2
+
+--- CLAVES / TOKENS (FALSOS) ---
+API_KEY_GITHUB=ghp_FAKEa1b2c3d4e5f6g7h8i9j0XYZ
+API_KEY_STRIPE=sk_test_FAKE_51M9uXJq2tA3b4C5d6E7f8G9h0
+API_KEY_OPENAI=sk-fake-9Fq2c3d4e5f6g7h8i9j0k1l2m3n4o5
+TOKEN_BEARER=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYWtlLXVzZXIiLCJleHAiOjE5ODAwMDAwMDAsImlhdCI6MTcwMDAwMDAwMH0.FAKE_SIGNATURE
+AWS_ACCESS_KEY_ID=AKIAFAKE1234567890AB
+AWS_SECRET_ACCESS_KEY=fake/abcDEFGHIJKLmnopQRSTuvwxYZ1234567890
+
+--- CLAVES 2FA / SEMILLAS (FALSAS) ---
+2FA_Seed_User_lucia.mg=JBSWY3DPEHPK3PXPFAKE1234
+2FA_Seed_User_jortega=MFRGGZDFMZTWQ2LKFAKE5678
+
+--- DOCUMENTOS / REFERENCIAS ---
+Factura: F-2025-001234 | Cliente: P-0001 | Concepto: Servicio de Consultoría | Importe: 4.321,89 EUR | Vencimiento: 2025-12-15
+Factura: F-2025-001235 | Cliente: P-0003 | Concepto: Mantenimiento anual     | Importe: 1.289,50 EUR | Vencimiento: 2025-10-20
+Contrato: C-2024-09-ACME | Firmas: P-0002,P-0004 | Estado: Borrador | Cláusula confidencial: Sí
+
+--- NOTAS PRIVADAS ---
+Caja fuerte (oficina): Código de ejemplo -> 74-29-13 (no real)
+Puerta servidor: Frase de paso -> "mariposa-azul-77" (falsa)
+
+--- ENDPOINTS / URLS (NO OPERATIVAS) ---
+https://api.ejemplo.local/v1/usuarios?estado=activo
+https://intranet.ejemplo.local/login
+https://sso.ejemplo.local/auth/realms/demo/protocol/openid-connect/token
+
+--- INVENTARIO (FICTICIO) ---
+Srv-DB-01 | IP: 10.20.30.11 | SO: Ubuntu 22.04 | Rol: PostgreSQL | Admin: dcampos
+Srv-WEB-02 | IP: 10.20.30.21 | SO: Debian 12  | Rol: Nginx      | Admin: elena.cr
+Srv-AUTH-01| IP: 10.20.30.31 | SO: Rocky 9    | Rol: Keycloak   | Admin: jortega
+
+--- CLAVES SIMULADAS (NO REALES) ---
+SSH_PRIVATE_KEY_FAKE_BEGIN
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABGZha2UAAABzdHVkZW50ZQAAABNlbnRyb3BpYS1mYWtlLXNlY3JldA==
+-----END OPENSSH PRIVATE KEY-----
+SSH_PRIVATE_KEY_FAKE_END
+
+--- MISC ---
+Pregunta secreta (Lucía): Primera mascota | Respuesta: "Toby-1999" (falsa)
+Pregunta secreta (Javier): Ciudad de infancia | Respuesta: "Aranjuez" (falsa)
+Observaciones: Este conjunto sirve para pruebas de cifrado simétrico/asimétrico, firmas y hashing.

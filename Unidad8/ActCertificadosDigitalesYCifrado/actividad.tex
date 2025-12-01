@@ -1,0 +1,55 @@
+% Actividad: Certificados digitales y cifrado
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{booktabs,tabularx,xcolor,hyperref,colortbl}
+\usepackage{array}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\definecolor{headerbg}{RGB}{69,114,167}
+\definecolor{rowalt}{RGB}{230,240,250}
+
+\begin{document}
+\section*{Actividad: Certificados digitales y cifrado}
+
+\textbf{Estudiantes:} Cristian Pérez, Emmanuel Rodríguez
+
+\bigskip
+  \centering
+  \begin{tabularx}{\textwidth}{|l|c|l|l|c|}
+    \hline
+    \cellcolor{headerbg}\textcolor{white}{\textbf{Sitio web}} & 
+    \cellcolor{headerbg}\textcolor{white}{\textbf{¿Tiene HTTPS?}} & 
+    \cellcolor{headerbg}\textcolor{white}{\textbf{Emisor del certificado}} & 
+    \cellcolor{headerbg}\textcolor{white}{\textbf{Vigencia}} & 
+    \cellcolor{headerbg}\textcolor{white}{\textbf{¿Seguro?}} \\
+    \hline
+    \href{https://www.google.com}{Google.com} & 
+    Sí & 
+    Google Trust Services & 
+    2025-10-13 -- 2026-01-05 & 
+    Sí \\
+    \hline
+    \cellcolor{rowalt}\href{https://www.example.com}{Example.com} & 
+    \cellcolor{rowalt}Sí & 
+    \cellcolor{rowalt}IdenTrust & 
+    \cellcolor{rowalt}2025-01-14 -- 2026-01-15 & 
+    \cellcolor{rowalt}Sí \\
+    \hline
+    \href{https://www.bancolombia.com}{Bancolombia.com} & 
+    Sí & 
+    DigiCert & 
+    2025-02-08 -- 2026-03-12 & 
+    Sí \\
+    \hline
+  \end{tabularx}
+  \label{tab:certificados}
+\end{table}
+
+
+
+
+\end{document}
+
