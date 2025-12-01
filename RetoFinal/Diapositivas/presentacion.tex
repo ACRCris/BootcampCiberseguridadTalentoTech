@@ -1,0 +1,595 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% Tema moderno
+\usetheme{metropolis}
+\metroset{block=fill, progressbar=frametitle}
+
+% Colores cybersecurity
+\definecolor{cybergreen}{RGB}{0,230,118}
+\definecolor{cyberdark}{RGB}{20,20,30}
+\definecolor{cyberblue}{RGB}{0,176,255}
+\definecolor{cyberpurple}{RGB}{156,39,176}
+\definecolor{alertred}{RGB}{244,67,54}
+\definecolor{warnorange}{RGB}{255,152,0}
+
+\setbeamercolor{palette primary}{bg=cyberdark,fg=white}
+\setbeamercolor{frametitle}{bg=cyberdark,fg=cybergreen}
+\setbeamercolor{progress bar}{fg=cybergreen,bg=cyberdark!50}
+\setbeamercolor{alerted text}{fg=alertred}
+\setbeamercolor{example text}{fg=cyberblue}
+\setbeamercolor{block title}{bg=cyberpurple,fg=white}
+\setbeamercolor{block body}{bg=cyberdark!5}
+\setbeamercolor{normal text}{fg=cyberdark}
+
+% Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,babel,shapes.geometric,calc}
+
+% Ruta de imagenes
+\graphicspath{{../Documento/imagenes/}}
+
+% Fuentes mas pequenas para que quepa el contenido
+\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{itemize/enumerate body}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subbody}{size=\scriptsize}
+
+% Estilo mejorado para las páginas de sección
+\setbeamercolor{section page}{bg=cyberdark,fg=white}
+\setbeamerfont{section title}{size=\Huge,series=\bfseries}
+\AtBeginSection[]{
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[cyberdark] (current page.south west) rectangle (current page.north east);
+      \node[anchor=center,text=cybergreen,font=\Huge\bfseries] at ([yshift=0.5cm]current page.center) {\insertsection};
+      \draw[cybergreen,line width=2pt] ([yshift=-0.3cm,xshift=-3cm]current page.center) -- ([yshift=-0.3cm,xshift=3cm]current page.center);
+    \end{tikzpicture}
+  \end{frame}
+}
+
+% Informacion del documento
+\title{Fortaleciendo la Red de Empresa XYZ}
+\subtitle{Reto Practico Final -- Ciberseguridad}
+\author{Cristian Camilo Perez Puentes}
+\institute{Bootcamp de Ciberseguridad 2025}
+\date{\today}
+
+\begin{document}
+
+% =============================================
+% PORTADA
+% =============================================
+{
+\setbeamercolor{background canvas}{bg=cyberdark}
+\begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+        \fill[cyberdark] (current page.south west) rectangle (current page.north east);
+        \node[anchor=center,text=cybergreen,font=\Huge\bfseries] at ([yshift=1.5cm]current page.center) {RETO FINAL};
+        \node[anchor=center,text=white,font=\Large] at ([yshift=0.3cm]current page.center) {Fortaleciendo la Red de Empresa XYZ};
+        \node[anchor=center,text=cyberblue,font=\normalsize] at ([yshift=-0.7cm]current page.center) {Ciberseguridad Nivel Explorador};
+        \node[anchor=center,text=white!70,font=\small] at ([yshift=-2cm]current page.center) {Cristian Camilo Perez Puentes};
+        \node[anchor=center,text=white!50,font=\footnotesize] at ([yshift=-2.5cm]current page.center) {Bootcamp 2025 | \today};
+    \end{tikzpicture}
+\end{frame}
+}
+
+% =============================================
+% INDICE
+% =============================================
+\begin{frame}{Temas}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \Large
+            \begin{itemize}
+                \setlength{\itemsep}{18pt}
+                \item Análisis Inicial
+                \item Configuraciones Aplicadas
+                \item Políticas de Seguridad
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \Large
+            \begin{itemize}
+                \setlength{\itemsep}{18pt}
+                \item Justificación Teórica
+                \item Conclusiones
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% =============================================
+% SECCION 1: ANALISIS INICIAL
+% =============================================
+\section{Analisis Inicial}
+
+\begin{frame}{Escenario Inicial}
+    \begin{columns}[T]
+        \begin{column}{0.55\textwidth}
+            \textbf{\textcolor{alertred}{! Situacion Actual:}}
+            \begin{itemize}
+                \item Red plana sin segmentacion
+                \item Sin firewall ni controles de acceso
+                \item Puertos abiertos innecesarios
+                \item Vulnerable a ataques
+            \end{itemize}
+            \vspace{0.3cm}
+            \textbf{\textcolor{cybergreen}{+ Objetivos:}}
+            \begin{itemize}
+                \item Evaluar vulnerabilidades
+                \item Redisenar la topologia
+                \item Implementar controles
+                \item Definir politicas
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \centering
+            \includegraphics[width=0.75\textwidth]{RedInicial.png}\\
+            {\scriptsize\textcolor{gray}{Red inicial}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Vulnerabilidades Detectadas}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \footnotesize
+            \begin{tabular}{@{}lcc@{}}
+                \toprule
+                \textbf{Vulnerabilidad} & \textbf{Prob.} & \textbf{Riesgo} \\ \midrule
+                Sin Firewall & Alta & \textcolor{alertred}{\textbf{Critico}} \\
+                Puertos Abiertos & Media & \textcolor{warnorange}{\textbf{Alto}} \\
+                Sin Segmentacion & Media & \textcolor{warnorange}{\textbf{Alto}} \\
+                \bottomrule
+            \end{tabular}
+            \vspace{0.3cm}
+            
+            \begin{block}{\footnotesize Impacto en Triada CIA}
+                \scriptsize
+                \textbf{\textcolor{cyberpurple}{C}} - Acceso no autorizado\\
+                \textbf{\textcolor{cyberblue}{I}} - Modificacion de datos\\
+                \textbf{\textcolor{cybergreen}{A}} - DoS y malware
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{alertblock}{\scriptsize Sin Firewall}
+                \scriptsize Trafico sin inspeccion. Exposicion total.
+            \end{alertblock}
+            \begin{alertblock}{\scriptsize Puertos Abiertos}
+                \scriptsize HTTP/HTTPS en PC Admin innecesario.
+            \end{alertblock}
+            \begin{alertblock}{\scriptsize Red Plana}
+                \scriptsize Movimiento lateral libre.
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% =============================================
+% SECCION 2: CONFIGURACIONES
+% =============================================
+\section{Configuraciones Aplicadas}
+
+\begin{frame}{Nueva Topologia Segmentada}
+    \begin{columns}[c]
+        \begin{column}{0.42\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{RedFinalSegmentada.png}\\
+            {\scriptsize\textcolor{gray}{Red con VLANs}}
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \textbf{\textcolor{cybergreen}{+ Mejoras:}}
+            \begin{itemize}
+                \item Segmentacion en 2 VLANs
+                \item Router como gateway y firewall
+                \item ACLs para control de trafico
+                \item Port Security en switch
+                \item WPA2 en red inalambrica
+            \end{itemize}
+            \vspace{0.2cm}
+            \begin{block}{\footnotesize Router-on-a-Stick}
+                \scriptsize Subinterfaces G0/0.10 y G0/0.20 con 802.1Q.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Arquitectura de Red Segmentada}
+    \centering
+    \begin{tikzpicture}[
+        font=\scriptsize,
+        >=latex,
+        device/.style={
+            draw,
+            rounded corners,
+            minimum width=2.2cm,
+            minimum height=0.6cm,
+            align=center,
+            fill=white
+        },
+        vlanbox/.style={
+            draw,
+            rounded corners,
+            inner sep=6pt,
+            dashed,
+            thick
+        },
+        netlabel/.style={font=\tiny, fill=white, inner sep=1pt},
+        scale=0.7, transform shape
+    ]
+    
+    % --- Nube e infraestructura perimetral ---
+    \node[device] (internet) {Internet};
+    \node[device, below=1cm of internet] (router) {Router ISP\\Firewall + ACLs};
+    \node[device, below=1cm of router] (switch) {Switch L2/L3\\Trunk 802.1Q};
+    
+    % --- VLAN 20 - Invitados ---
+    \node[vlanbox, below=2.2cm of switch, xshift=-3.5cm,
+          minimum width=3.2cm, minimum height=2.5cm] (vlan20) {};
+    \node[anchor=north, font=\tiny\bfseries, yshift=-2pt]
+        at (vlan20.north) {VLAN 20 -- Invitados};
+    \node[device] at ([yshift=0.2cm]vlan20.center) (apwifi) {WiFi WPA2};
+    \node[device, below=0.5cm of apwifi] (pcinv) {PC Invitado};
+    
+    % --- VLAN 10 - Administrativa ---
+    \node[vlanbox, below=2.2cm of switch, xshift=3.5cm,
+          minimum width=3.2cm, minimum height=2.5cm] (vlan10) {};
+    \node[anchor=north, font=\tiny\bfseries, yshift=-2pt]
+        at (vlan10.north) {VLAN 10 -- Admin};
+    \node[device] at ([yshift=0.2cm]vlan10.center) (pcadmin) {PC Admin};
+    \node[device, below=0.5cm of pcadmin] (web) {Servidor Web};
+    
+    % --- Conexiones ---
+    \draw[thick,->] (internet.south) -- (router.north);
+    \draw[thick,->] (router.south) -- (switch.north);
+    \draw[thick,->] (switch.south) -- ++(0,-0.3) -| (vlan10.north)
+        node[pos=0.25, above, netlabel]{VLAN 10};
+    \draw[thick,->] (switch.south) -- ++(0,-0.3) -| (vlan20.north)
+        node[pos=0.25, above, netlabel]{VLAN 20};
+    \draw[thick, dashed, ->, cybergreen] (pcadmin.south) -- (web.north);
+    \draw[thick, dashed, ->, alertred] ([xshift=-3pt]pcinv.west) -- ++(-0.8,0) |- ([yshift=-3pt]internet.west)
+        node[pos=0.75, left, netlabel]{Solo web};
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Segmentacion en VLANs}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{\small VLAN 10 -- Administrativa}
+                \scriptsize
+                \begin{itemize}
+                    \item PC Admin + Servidor Web
+                    \item Red: \texttt{192.168.10.0/24}
+                    \item Gateway: \texttt{192.168.10.1}
+                \end{itemize}
+            \end{exampleblock}
+            \vspace{0.2cm}
+            \begin{block}{\small VLAN 20 -- Invitados}
+                \scriptsize
+                \begin{itemize}
+                    \item Access Point + PC Invitado
+                    \item Red: \texttt{192.168.20.0/24}
+                    \item Solo acceso a Internet
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Switch:}
+            \scriptsize
+            \begin{itemize}
+                \item \texttt{Fa0/1}: Trunk 802.1Q
+                \item \texttt{Fa0/2-3}: VLAN 10
+                \item \texttt{Fa0/4}: VLAN 20
+            \end{itemize}
+            \vspace{0.2cm}
+            \textbf{ACL en Router:}
+            \scriptsize
+            \begin{itemize}
+                \item \textcolor{alertred}{Deny}: VLAN20 $\rightarrow$ VLAN10
+                \item \textcolor{cybergreen}{Permit}: VLAN20 $\rightarrow$ Internet
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Mecanismos de Autenticacion}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\small WPA2-PSK en WiFi}
+                \scriptsize
+                \begin{itemize}
+                    \item SSID: \texttt{Invitados}
+                    \item Cifrado: AES
+                    \item Passphrase compleja
+                \end{itemize}
+            \end{block}
+            \vspace{0.1cm}
+            \begin{block}{\small Acceso a Dispositivos}
+                \scriptsize
+                \begin{itemize}
+                    \item Usuario local privilegio 15
+                    \item SSH para gestion remota
+                    \item \texttt{enable secret}
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{\small Port Security}
+                \scriptsize
+                \begin{itemize}
+                    \item Max 2 MACs por puerto
+                    \item Aprendizaje \texttt{sticky}
+                    \item Violacion: \texttt{restrict}
+                \end{itemize}
+            \end{exampleblock}
+            \vspace{0.1cm}
+            \textbf{\textcolor{cybergreen}{Beneficios:}}
+            \scriptsize
+            \begin{itemize}
+                \item Impide dispositivos no autorizados
+                \item Protege contra MAC spoofing
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% =============================================
+% SECCION 3: POLITICAS
+% =============================================
+\section{Politicas de Seguridad}
+
+\begin{frame}{Higiene Digital}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\small Contrasenas}
+                \scriptsize
+                \begin{itemize}
+                    \item Minimo 10 caracteres
+                    \item Combinacion de tipos
+                    \item Cambio cada 90 dias
+                \end{itemize}
+            \end{block}
+            \vspace{0.1cm}
+            \begin{block}{\small Actualizaciones}
+                \scriptsize
+                \begin{itemize}
+                    \item Firmware de dispositivos
+                    \item Software de servidores
+                    \item Pruebas previas
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{\small Buenas Practicas}
+                \scriptsize
+                \begin{itemize}
+                    \item Bloqueo de pantalla
+                    \item Cuentas individuales
+                    \item Cierre de sesiones
+                \end{itemize}
+            \end{exampleblock}
+            \vspace{0.1cm}
+            \begin{exampleblock}{\small Respaldos}
+                \scriptsize
+                \begin{itemize}
+                    \item Configuraciones de red
+                    \item Datos criticos
+                    \item Almacenamiento externo
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Politica de Seguridad}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\small Normas de Uso}
+                \scriptsize
+                \begin{itemize}
+                    \item Solo software autorizado
+                    \item Uso laboral de recursos
+                    \item Proteccion de info confidencial
+                \end{itemize}
+            \end{block}
+            \vspace{0.1cm}
+            \begin{block}{\small Control de Acceso}
+                \scriptsize
+                \begin{itemize}
+                    \item Minimo privilegio
+                    \item Cuentas individuales
+                    \item Trazabilidad
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{alertblock}{\small Gestion de Incidentes}
+                \scriptsize
+                \begin{itemize}
+                    \item Reporte inmediato a TI
+                    \item Documentar evento
+                    \item Escalamiento
+                \end{itemize}
+            \end{alertblock}
+            \vspace{0.1cm}
+            \begin{exampleblock}{\small Responsabilidades}
+                \scriptsize
+                \begin{itemize}
+                    \item Usuarios: cumplir normas
+                    \item Admins: implementar controles
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% =============================================
+% SECCION 4: JUSTIFICACION
+% =============================================
+\section{Justificacion Teorica}
+
+\begin{frame}{Triada CIA}
+    \centering
+    \begin{tikzpicture}[
+        pillar/.style={
+            draw,
+            rounded corners,
+            minimum width=3.3cm,
+            minimum height=1.6cm,
+            align=center,
+            font=\scriptsize,
+            text width=3.1cm
+        }
+    ]
+        \node[pillar, fill=cyberpurple!20, draw=cyberpurple] (conf) at (0,0) {
+            \textbf{\normalsize\textcolor{cyberpurple}{Confidencialidad}}\\[2pt]
+            Segmentacion VLAN\\
+            ACLs restrictivas\\
+            WPA2-PSK
+        };
+        \node[pillar, fill=cyberblue!20, draw=cyberblue] (int) at (4,0) {
+            \textbf{\normalsize\textcolor{cyberblue}{Integridad}}\\[2pt]
+            Autenticacion local\\
+            SSH para gestion\\
+            MAC sticky
+        };
+        \node[pillar, fill=cybergreen!20, draw=cybergreen!70!black] (disp) at (8,0) {
+            \textbf{\normalsize\textcolor{cybergreen!70!black}{Disponibilidad}}\\[2pt]
+            Aislamiento VLANs\\
+            Respaldos periodicos\\
+            Plan de incidentes
+        };
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Defensa en Profundidad}
+    \centering
+    \begin{tikzpicture}[
+        layer/.style={
+            draw,
+            rounded corners,
+            minimum height=0.65cm,
+            align=center,
+            font=\scriptsize
+        }
+    ]
+        \node[layer, fill=alertred!30, minimum width=10cm] (l1) at (0,2) {\textbf{Perimetro:} Router ISP + ACLs + NAT};
+        \node[layer, fill=warnorange!30, minimum width=8cm] (l2) at (0,1.2) {\textbf{Red:} Segmentacion VLAN + 802.1Q};
+        \node[layer, fill=cyberblue!30, minimum width=6cm] (l3) at (0,0.4) {\textbf{Acceso:} Port Security + WPA2};
+        \node[layer, fill=cybergreen!30, minimum width=4cm] (l4) at (0,-0.4) {\textbf{Datos:} Politicas + Respaldos};
+        
+        \node[font=\scriptsize, align=left, text width=4cm] at (6.5,0.8) {
+            \textbf{Principio:}\\
+            Multiples capas protegen los activos.\\[3pt]
+            Si una falla, las demas contienen.
+        };
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Minimo Privilegio}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{\small En la Red}
+                \scriptsize
+                \begin{itemize}
+                    \item Invitados: solo Internet
+                    \item VLAN 10 aislada de VLAN 20
+                    \item Servidor: solo HTTPS
+                    \item Puertos: MACs conocidas
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\small En Usuarios}
+                \scriptsize
+                \begin{itemize}
+                    \item Privilegios especificos
+                    \item Solo admins gestionan red
+                    \item Acceso segun funcion
+                    \item Cuentas individuales
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.4cm}
+    \centering
+    \begin{tikzpicture}
+        \node[draw=cybergreen, rounded corners, fill=cybergreen!10, text width=9cm, align=center, font=\small] {
+            \textit{``Solo los privilegios minimos necesarios para la funcion.''}
+        };
+    \end{tikzpicture}
+\end{frame}
+
+% =============================================
+% SECCION 5: CONCLUSIONES
+% =============================================
+\section{Conclusiones}
+
+\begin{frame}{Resumen de Mitigaciones}
+    \centering
+    \footnotesize
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Vulnerabilidad} & \textbf{Mitigacion} & \textbf{Capa} \\ \midrule
+        Sin Firewall & ACLs en RouterISP & Perimetral \\
+        Puertos Abiertos & Solo HTTPS en servidor & Config \\
+        Sin Segmentacion & VLAN 10 + VLAN 20 & Red \\
+        Acceso libre & Port Security + WPA2 & Acceso \\
+        Sin politicas & Documento normativo & Organizacional \\
+        \bottomrule
+    \end{tabular}
+    
+    \vspace{0.5cm}
+    \begin{tikzpicture}
+        \node[draw=cybergreen, rounded corners, fill=cybergreen!10, text width=10cm, align=center, font=\small] {
+            \textbf{Resultado:} Red segmentada con controles multinivel, alineada con CIA.
+        };
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Recomendaciones Futuras}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\small Corto Plazo}
+                \scriptsize
+                \begin{itemize}
+                    \item Implementar 802.1X (RADIUS)
+                    \item Configurar IDS/IPS
+                    \item Centralizar logs
+                    \item Automatizar respaldos
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{\small Mediano Plazo}
+                \scriptsize
+                \begin{itemize}
+                    \item Firewall dedicado (NGFW)
+                    \item VPN para acceso remoto
+                    \item SIEM centralizado
+                    \item Auditorias periodicas
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \centering
+    \begin{tikzpicture}
+        \node[draw=cyberblue, rounded corners, fill=cyberblue!10, text width=8cm, align=center, font=\small] {
+            \textbf{La seguridad es un proceso continuo.}
+        };
+    \end{tikzpicture}
+\end{frame}
+
+% =============================================
+% CIERRE
+% =============================================
+
+
+\end{document}

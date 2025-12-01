@@ -1,0 +1,30 @@
+# Archivos de sistema
+.DS_Store
+
+# Logs y temporales
+*.log
+*.aux
+*.out
+*.toc
+*.nav
+*.snm
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Copias temporales de editores
+*~
+*.swp
+
+# Secretos y claves
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.env
+.env.*
+secrets.*
+id_rsa
+id_ed25519
