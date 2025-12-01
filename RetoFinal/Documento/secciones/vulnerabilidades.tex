@@ -1,0 +1,38 @@
+% Ejemplo de sección modular para vulnerabilidades
+% Puedes incluir este archivo en el documento principal con \input{secciones/vulnerabilidades.tex}
+
+\subsection{Ejemplo de Vulnerabilidad Detallada}
+
+\subsubsection{SQL Injection en Formulario de Login}
+
+\begin{itemize}[leftmargin=2cm]
+    \item \textbf{Identificador:} VULN-2025-001
+    \item \textbf{Descripción:} El formulario de autenticación no valida correctamente las entradas del usuario, permitiendo la inyección de código SQL malicioso.
+    \item \textbf{Severidad:} \textcolor{red}{CRÍTICA}
+    \item \textbf{CVSS Score:} 9.8 (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)
+    \item \textbf{Sistema Afectado:} Aplicación web principal - módulo de autenticación
+    \item \textbf{Ubicación:} \texttt{/login.php} línea 45
+    \item \textbf{Impacto:} 
+        \begin{itemize}
+            \item Acceso no autorizado a la base de datos
+            \item Exposición de credenciales de usuarios
+            \item Potencial compromiso total del sistema
+        \end{itemize}
+    \item \textbf{Prueba de Concepto:}
+\begin{lstlisting}[language=SQL]
+' OR '1'='1' --
+admin' UNION SELECT NULL, username, password FROM users --
+\end{lstlisting}
+    \item \textbf{Recomendación:} 
+        \begin{enumerate}
+            \item Implementar prepared statements con parámetros vinculados
+            \item Validar y sanitizar todas las entradas del usuario
+            \item Aplicar el principio de mínimos privilegios en las consultas
+            \item Implementar WAF (Web Application Firewall)
+        \end{enumerate}
+    \item \textbf{Referencias:}
+        \begin{itemize}
+            \item OWASP A03:2021 - Injection
+            \item CWE-89: SQL Injection
+        \end{itemize}
+\end{itemize}

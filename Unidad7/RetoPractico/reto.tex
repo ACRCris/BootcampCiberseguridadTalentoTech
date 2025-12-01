@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+
+% ---- Encoding & language (works with pdfLaTeX) ----
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+% ---- Visual style to mimic HTML/CSS cards & tables ----
+\usepackage[a4paper,margin=20mm]{geometry}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+
+% Sans font (web-like look) – portable with TeX Live
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+
+% ---- Color palette (tailwind-like) ----
+\definecolor{primary}{HTML}{0EA5E9}   % sky-500
+\definecolor{headerbg}{HTML}{0EA5E9}
+\definecolor{headerfg}{HTML}{FFFFFF}
+\definecolor{border}{HTML}{E2E8F0}    % slate-200
+\definecolor{rowbg}{HTML}{F8FAFC}     % slate-50
+\definecolor{textmuted}{HTML}{334155}  % slate-700
+
+% ---- Title style (similar to an <h1>) ----
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}{}{0pt}{}
+\titleformat{\subsection}
+  {\large\bfseries\color{textmuted}}{}{0pt}{}
+
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Reto: Autenticación y Listas de Control de Acceso (ACL)}}\\
+  \vspace{2mm}
+  \small \textcolor{textmuted}{Empresa ficticia: \textbf{TecnoRed}}
+\end{center}
+
+% ---------- Objetivo y Escenario ----------
+\begin{tcolorbox}[
+  enhanced, breakable, colback=white, colframe=border,
+  boxrule=0.4pt, arc=3pt, drop shadow=black!10, left=8pt, right=8pt, top=6pt, bottom=6pt]
+\section{Objetivo}
+Aplicar conocimientos sobre autenticación y ACL para proteger recursos con herramientas digitales gratuitas.
+
+\section{Escenario}
+La empresa trabaja en la nube y debe proteger: \textbf{documentos compartidos}, \textbf{panel de administración} y \textbf{cuentas de correo}.\\
+\textbf{Misión:} definir métodos de autenticación adecuados y diseñar reglas ACL para controlar quién puede acceder y qué puede hacer.
+\end{tcolorbox}
+
+\vspace{4mm}
+
+% ---------- Tabla principal (estilo "HTML/CSS card") ----------
+\begin{tcolorbox}[
+  enhanced, breakable, colback=white, colframe=border,
+  boxrule=0.4pt, arc=6pt, drop shadow=black!10,
+  left=10pt, right=10pt, top=8pt, bottom=10pt,
+  title=\textbf{\color{primary}Mapa de controles} \; \textcolor{textmuted}{(Rol → Autenticación → Reglas ACL → Riesgo)}]
+
+% --- HTML-like grid without tabularray ---
+\arrayrulecolor{border}
+\setlength{\arrayrulewidth}{0.6pt}
+\rowcolors{2}{rowbg}{white}
+\begin{center}
+\begin{tabular}{|p{0.18\textwidth}|p{0.30\textwidth}|p{0.32\textwidth}|p{0.20\textwidth}|}
+\rowcolor{headerbg}\color{headerfg}\bfseries Rol & \bfseries Método de autenticación & \bfseries Reglas ACL (permisos) & \bfseries Riesgo si falla / no aplica\\ \hline
+Directora &
+\textbf{SSO} (Google/Microsoft) + \textbf{MFA} (TOTP, códigos de respaldo) + FIDO2
+\newline\newline Contraseña robusta + gestor de contraseñas.
+&
+\textbf{Acceso total} al panel
+\newline Crear/leer/editar/eliminar
+\newline\newline Gestión de usuarios y permisos.
+&
+\small Compromiso completo del negocio si se omite MFA o se reutiliza contraseña.
+\\ \hline
+Técnico de soporte &
+\textbf{SSO + MFA (TOTP)}
+\newline\newline Device trust (equipo corporativo) y IPs permitidas
+\newline\newline Sesiones: 8h.
+&
+Acceso \textbf{limitado a herramientas técnicas} (logs, monitoreo)
+\newline\newline Editar configuración
+\newline\newline \textbf{Sin} acceso a finanzas/RR.HH.
+\newline\newline \textbf{Sin} eliminar datos.
+&
+\small Elevación indebida de privilegios $\rightarrow$ cambios no autorizados o robo de credenciales.
+\\ \hline
+Secretaria &
+Correo y Drive + \textbf{MFA} (SMS o TOTP)
+\newline\newline Gestor de contraseñas obligatorio.
+&
+Acceso a \textbf{carpetas de oficina/agenda}
+\newline\newline Leer y escribir
+\newline\newline \textbf{Sin} modificar ACL
+\newline\newline \textbf{Sin} panel ni herramientas técnicas.
+&
+\small Phishing $\rightarrow$ fuga de documentos y suplantación en calendarios.
+\\ \hline
+Visitante &
+\textbf{Sin cuenta}
+\newline\newline Enlaces públicos con expiración + CAPTCHA.
+&
+Solo \textbf{lectura} de documentos públicos
+\newline\newline \textbf{Sin} descarga masiva ni indexación.
+&
+\small Configuración pública incorrecta $\rightarrow$ exposición de información.
+\\ \hline
+\end{tabular}
+\end{center}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+
+\end{document}

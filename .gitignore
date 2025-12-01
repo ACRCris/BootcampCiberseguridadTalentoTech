@@ -31,9 +31,6 @@ $RECYCLE.BIN/
 # Carpetas de sistema
 .DS_Store
 
-# PDFs grandes (más de 10MB generalmente)
-# Los PDFs pequeños sí se incluyen
-
 # Archivos de Office temporales
 ~$*
 *.~*
@@ -49,3 +46,16 @@ __pycache__/
 # Archivos de backup
 *.bak
 *.backup
+
+# Secretos y claves
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.env
+.env.*
+secrets.*
+id_rsa
+id_ed25519

@@ -1,0 +1,678 @@
+\documentclass[12pt,a4paper]{article}
+
+% Paquetes esenciales
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,babel}
+
+% Configuración de geometría
+\geometry{
+    left=2.5cm,
+    right=2.5cm,
+    top=3cm,
+    bottom=3cm,
+    headheight=16pt
+}
+
+% Configuración de colores
+\definecolor{securityred}{RGB}{178,34,34}
+\definecolor{securityblue}{RGB}{25,25,112}
+\definecolor{codegray}{RGB}{240,240,240}
+\definecolor{codegreen}{RGB}{0,128,0}
+\definecolor{codecomment}{RGB}{128,128,128}
+
+% Configuración de hipervínculos
+\hypersetup{
+    colorlinks=true,
+    linkcolor=securityblue,
+    filecolor=securityblue,
+    urlcolor=securityblue,
+    citecolor=securityblue
+}
+
+\lstset{
+    backgroundcolor=\color{codegray},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    inputencoding=utf8,
+    commentstyle=\color{codecomment},
+    keywordstyle=\color{securityblue}\bfseries,
+    stringstyle=\color{codegreen},
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{codecomment},
+    showstringspaces=false,
+    tabsize=4
+}
+
+% Configuración de encabezados y pies de página
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{Informe de Ciberseguridad}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Configuración de títulos de sección
+\titleformat{\section}
+    {\normalfont\Large\bfseries\color{securityred}}
+    {\thesection}{1em}{}
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\color{securityblue}}
+    {\thesubsection}{1em}{}
+
+% ============================================
+% INFORMACIÓN DEL DOCUMENTO
+% ============================================
+\title{
+    \Huge\textbf{Reto Práctico Final}\\
+    \vspace{1cm}
+    \Large Fortaleciendo la Red de Empresa XYZ
+}
+\author{
+    Cristian Camilo Perez Puentes\\
+    \texttt{cristian.perez@ejemplo.com}
+}
+\date{\today}
+
+% ============================================
+% INICIO DEL DOCUMENTO
+% ============================================
+\begin{document}
+
+% Portada
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries\color{securityred} RETO FINAL\par}
+    \vspace{0.5cm}
+    {\Large\bfseries CIBERSEGURIDAD NIVEL EXPLORADOR\par}
+    \vspace{2cm}
+    
+    {\LARGE\bfseries Fortaleciendo la Red de Empresa XYZ en 6 Horas\par}
+    \vspace{2cm}
+    
+    {\large\bfseries Preparado por:\par}
+    \vspace{0.5cm}
+    {\large Cristian Camilo Perez Puentes\par}
+    
+    \vfill
+    
+    {\large\bfseries Fecha:\par}
+    {\large \today\par}
+    
+    \vspace{1cm}
+    
+    {\footnotesize\textit{Bootcamp de Ciberseguridad - 2025}\par}
+\end{titlepage}
+
+% Índice
+\tableofcontents
+\newpage
+
+% Escenario
+\section*{Escenario}
+\addcontentsline{toc}{section}{Escenario}
+
+La Empresa XYZ es una compañía pequeña que ha detectado problemas de seguridad en su red interna. La red actual es plana, sin segmentación, y carece de controles básicos de seguridad, lo que la hace vulnerable a ataques y accesos no autorizados. Se te ha asignado el rol de consultor de ciberseguridad para evaluar, rediseñar y aplicar medidas de protección en un entorno simulado (por ejemplo, utilizando Cisco Packet Tracer, GNS3 o una herramienta similar).
+
+\subsection*{Objetivos del Reto}
+
+Los participantes deberán demostrar lo siguiente:
+
+\begin{itemize}
+    \item \textbf{Conceptos Fundamentales y Modelos de Seguridad:} Identificar y explicar la relevancia de la tríada CIA (Confidencialidad, Integridad y Disponibilidad) y otros modelos básicos de seguridad en la red.
+    
+    \item \textbf{Higiene Digital:} Proponer y aplicar acciones de higiene digital (por ejemplo, gestión de contraseñas, actualizaciones, segmentación y respaldos) que protejan la información.
+    
+    \item \textbf{Análisis de Vulnerabilidades, Amenazas y Riesgos:} Detectar y documentar al menos tres vulnerabilidades o riesgos presentes en la red actual.
+    
+    \item \textbf{Medios de Transmisión y Autenticación:} Reconocer y configurar mecanismos de autenticación y protocolos seguros para la transmisión de datos (por ejemplo, configuración de WPA2 en redes inalámbricas o autenticación en puertos).
+    
+    \item \textbf{Configuración de Redes LAN y VLAN:} Diseñar y configurar una red LAN segmentada en al menos dos VLAN (por ejemplo, una para el área administrativa y otra para invitados) y definir reglas de acceso.
+    
+    \item \textbf{Política de Seguridad de la Información:} Elaborar un documento breve que contenga las políticas, normas y procedimientos básicos para la protección de los recursos informáticos de la empresa.
+\end{itemize}
+
+\newpage
+
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{imagenes/RedInicial.png}
+    \captionof{figure}{Diagrama de la red inicial de la Empresa XYZ}
+    \label{fig:red-inicial}
+\end{minipage}%%
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+    % Ajuste fino de alineación vertical con la figura
+    \vspace{-9.5cm}
+    
+    	\textbf{Descripción de la topología:}\\[0.3em]
+    La topología inicial de la red de la Empresa XYZ se modelo en Cisco Packet Tracer, con los siguientes componentes principales:
+    \begin{itemize}
+        \item \textbf{Modulo cloud}: Representa la conexión a Internet.
+        \item \textbf{Router}: Gestiona el tráfico entre la red interna e Internet.
+        \item \textbf{Switch}: Conecta todos los dispositivos dentro de la red local.
+        \item \textbf{Laptop}: Representa a los usuarios invitados.
+        \item \textbf{Servidores:} Uno representa el servidor web y otro el PC administrativo; ambos exponen servicios HTTP/HTTPS configurados, como se muestra en las figuras de puertos abiertos (Firgura \ref{fig:puertos-http-https}).
+    \end{itemize}
+
+   
+    % Escribe aquí una descripción textual de la red
+    
+    % \vspace{1em}
+    % 	\textbf{Observaciones iniciales:}\\[0.3em]
+    % % Añade aquí tus observaciones clave sobre la topología
+
+    
+    
+    
+    % \textbf{Observaciones iniciales:}
+    
+    
+\end{minipage}
+
+ \vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{imagenes/PuertoAbiertoHttp.png}
+    \end{minipage}%%
+    \hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{imagenes/PuertoAbiertoHttps.png}
+    \end{minipage}
+    \caption{Puertos HTTP y HTTPS abiertos en el servidor}
+    \label{fig:puertos-http-https}
+\end{figure}
+
+\subsection{Identificación de Vulnerabilidades}
+
+\subsubsection{Matriz de Riesgos}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}lllll@{}}
+			\toprule
+			  \textbf{Vulnerabilidad} & \textbf{Probabilidad} & \textbf{Impacto} & \textbf{Nivel de riesgo} \\ \midrule
+            Ausencia de Firewall y reglas de filtrado& Alta &  Alto &  Critico\\
+         Puerto Abierto & Media &  Alto &  Alta\\
+            Falta de Segmentación de Red & Media &  Alto &  Alta\\
+        \bottomrule
+    \end{tabular}
+    \caption{Matriz de riesgos para las vulnerabilidades identificadas}
+    \label{tab:matriz-riesgos}
+\end{table}
+
+
+\subsubsection{Ausencia de Firewall y reglas de filtrado}
+\begin{itemize}[leftmargin=2cm]
+
+    \item \textbf{Descripción:} 
+    El sistema no cuenta con un firewall activo ni con reglas de filtrado configuradas. Esto permite que cualquier tráfico entrante o saliente llegue directamente al equipo sin ser inspeccionado o limitado.
+
+    \item \textbf{Tipo:} 
+    Vulnerabilidad de configuración / Punto de entrada expuesto. 
+
+    \item \textbf{Impacto Potencial:} Exposición total del sistema a tráfico malicioso sin ningún tipo de bloqueo.
+     
+
+
+    \item \textbf{Riesgo:} Critico, ya que la ausencia de un firewall permite diversidad de ataques, desde accesos no autorizados, malware, hasta ataques de denegación de servicio (DoS), lo cual determina una probabilidad e impactos altos.
+
+    \item \textbf{Relación con la Tríada CIA:}
+    \begin{itemize}
+        \item \textbf{Confidencialidad:} Acceso no autorizado a datos al no existir barreras de filtrado.
+        \item \textbf{Integridad:} Un atacante podría modificar información o configuración del sistema.
+        \item \textbf{Disponibilidad:} Riesgo elevado de ataques de denegación de servicio (DoS) o interrupciones por malware.
+    \end{itemize}
+
+\end{itemize}
+
+
+\subsubsection{Vulnerabilidad, Puerto Abierto }
+\begin{itemize}[leftmargin=2cm]
+\item \textbf{Descripción:} Los puertos HTTP (80) y HTTPS (443) están abiertos en el PC Administrativo, lo cual expone servicios web que no deberían ejecutarse en un equipo de usuario interno.
+\item \textbf{Tipo:} Vulnerabilidad de configuración / Punto de entrada expuesto
+\item \textbf{Impacto Potencial:}  Amplía la superficie de ataque del sistema, permitiendo que posibles atacantes interactúe con servicios web no necesario t aumenta el riesgo de acceso no autorizado o movimiento lateral dentro de la red.
+\item \textbf{Riesgo: } Alto, ya que depende de la medidas de seguridad en otras capas de red y del software del servidor web, pero puede tener un impacto significativo si se explotan vulnerabilidades en esos servicios.
+\item \textbf{Relación con la Tríada CIA:} 
+\begin{itemize}
+    \item \textbf{Confidencialidad:} Riesgo de acceso no autorizado a datos a través de vulnerabilidades en los servicios web.
+    \item \textbf{Integridad:} Posibilidad de manipulación de datos o configuración del sistema mediante ataques dirigidos a los servicios web.
+    \item \textbf{Disponibilidad:} Riesgo de interrupciones del servicio debido a ataques dirigidos a los puertos abiertos.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Falta de Segmentación de Red}
+\begin{itemize}[leftmargin=2cm]
+
+    \item \textbf{Descripción:} 
+    La red no cuenta con segmentación entre dispositivos, permitiendo que todos los equipos se comuniquen libremente entre sí sin restricciones. 
+    \item \textbf{Tipo:} 
+    Vulnerabilidad de arquitectura / configuración.  
+    
+
+    \item \textbf{Impacto Potencial:}
+    \begin{itemize}
+
+        \item Facilita el movimiento lateral de un atacante dentro de la red e incrementa la probabilidad de que malware o exploits se propaguen entre equipos, ademas dificulta la detección y el aislamiento de incidentes.
+    \end{itemize}
+
+    \item \textbf{Riesgo:} 
+    Alto, ya que la falta de segmentación aumenta la probabilidad de compromisos múltiples dentro los cual es de un alto impacto, la probabilidad de ser explotada depende la protection de la red en otras capas.
+
+    \item \textbf{Relación con la Tríada CIA:}
+    \begin{itemize}
+        \item \textbf{Confidencialidad:} Datos sensibles pueden ser accesibles desde cualquier dispositivo de la red.
+        \item \textbf{Integridad:} Un atacante que comprometa un equipo puede modificar información en otros sistemas.
+        \item \textbf{Disponibilidad:} Malware o ataques DoS pueden propagarse sin barreras, interrumpiendo múltiples servicios.
+    \end{itemize}
+
+\end{itemize}
+
+\subsection{Análisis de Amenazas}
+
+\subsection{Herramientas Utilizadas para el Análisis}
+
+\newpage
+
+% ============================================
+% TAREA 2: REDISEÑO Y CONFIGURACIÓN (2.5 HORAS)
+% ============================================
+\section{Rediseño y Configuración de la Red}
+
+\subsection{Diseño de la Nueva Topología}
+
+\subsubsection{Diagrama de Red Actualizado}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{imagenes/RedFinalSegmentada.png}
+    \caption{Diagrama de la red rediseñada de la Empresa XYZ}
+    \label{fig:red-redisenada}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    font=\small,
+    >=latex,
+    device/.style={
+        draw,
+        rounded corners,
+        minimum width=3.2cm,
+        minimum height=0.9cm,
+        align=center,
+        fill=white
+    },
+    vlanbox/.style={
+        draw,
+        rounded corners,
+        inner sep=10pt,
+        dashed,
+        thick
+    },
+    netlabel/.style={font=\scriptsize, fill=white, inner sep=1pt}
+]
+
+% --- Nube e infraestructura perimetral (vertical) ---
+\node[device] (internet) {Internet};
+
+\node[device, below=1.5cm of internet] (router) {Router ISP\\Firewall + ACLs\\NAT};
+
+\node[device, below=1.5cm of router] (switch) {Switch L2/L3\\Troncal 802.1Q\\VLAN 10, 20};
+
+% --- VLAN 20 - Invitados (izquierda) ---
+\node[vlanbox, below=3.5cm of switch, xshift=-4.5cm,
+      minimum width=4.5cm, minimum height=4cm] (vlan20) {};
+\node[anchor=north, font=\small\bfseries, yshift=-3pt]
+    at (vlan20.north)
+    {VLAN 20 -- Invitados};
+
+\node[device] at ([yshift=0.3cm]vlan20.center) (apwifi)
+    {Punto de Acceso WiFi\\WPA2\\SSID Invitados};
+
+\node[device, below=0.8cm of apwifi] (pcinv)
+    {PC Invitado\\Sin acceso a VLAN 10};
+
+% --- VLAN 10 - Administrativa (derecha) ---
+\node[vlanbox, below=3.5cm of switch, xshift=4.5cm,
+      minimum width=4.5cm, minimum height=4cm] (vlan10) {};
+\node[anchor=north, font=\small\bfseries, yshift=-3pt]
+    at (vlan10.north)
+    {VLAN 10 -- Administrativa};
+
+\node[device] at ([yshift=0.3cm]vlan10.center) (pcadmin)
+    {PC Administrativo\\Autenticacion 802.1X};
+
+\node[device, below=0.8cm of pcadmin] (web)
+    {Servidor Web\\Solo HTTPS (443)};
+
+% --- Conexiones fisicas principales ---
+\draw[thick,->] (internet.south) -- (router.north);
+\draw[thick,->] (router.south) -- (switch.north);
+
+% Conexiones a VLAN 10
+\draw[thick,->] (switch.south) -- ++(0,-0.5) -| (vlan10.north)
+    node[pos=0.25, above, netlabel]{Trunk VLAN 10};
+
+% Conexiones a VLAN 20
+\draw[thick,->] (switch.south) -- ++(0,-0.5) -| (vlan20.north)
+    node[pos=0.25, above, netlabel]{Trunk VLAN 20};
+
+% --- Reglas de seguridad (flechas logicas separadas) ---
+% ACL desde Internet al servidor web
+\draw[thick, dashed, ->] ([xshift=5pt]router.east) -- ++(2.5,0) |- ([yshift=5pt]web.east)
+    node[pos=0.25, above, netlabel]{ACL: HTTPS};
+
+% Gestion desde PC Admin al servidor
+\draw[thick, dashed, ->] (pcadmin.south) -- (web.north)
+    node[midway, right, netlabel]{Gestion};
+
+% Invitados solo navegan a Internet
+\draw[thick, dashed, ->] ([xshift=-5pt]pcinv.west) -- ++(-1.5,0) |- ([yshift=-5pt]internet.west)
+    node[pos=0.75, left, netlabel]{Solo web};
+
+\end{tikzpicture}
+\caption{Red de la Empresa XYZ segmentada en VLAN 10 (Administrativa) y VLAN 20 (Invitados)}
+\label{fig:red-xyz-vertical}
+\end{figure}
+
+
+
+\vspace{2cm}
+
+
+\subsection{Configuración de Dispositivos}
+
+\subsubsection{Configuración del Switch}
+
+\begin{lstlisting}[language=bash, caption=Comandos de configuracion del switch]
+enable
+conf t
+hostname Switch
+
+! Crear VLANs
+vlan 10
+ name ADMIN
+vlan 20
+ name INVITADOS
+exit
+
+! Puerto hacia el router: TRUNK 802.1Q
+interface fa0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+ no shutdown
+
+! Puertos acceso VLAN 10 (Pc Admin + Servidor Web)
+interface fa0/2
+ switchport mode access
+ switchport access vlan 10
+ ! Medida basica de autenticacion de puerto (Port Security)
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ no shutdown
+
+interface fa0/3
+ switchport mode access
+ switchport access vlan 10
+ ! Medida basica de autenticacion de puerto (Port Security)
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ no shutdown
+
+! Puerto acceso VLAN 20 (AP invitados)
+interface fa0/4
+ switchport mode access
+ switchport access vlan 20
+ ! Medida basica de autenticacion de puerto (Port Security)
+ switchport port-security
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ no shutdown
+
+end
+\end{lstlisting}
+
+\vspace{2cm}
+
+\subsubsection{Configuración del Router}
+
+\begin{lstlisting}[language=bash, caption=Comandos de configuracion del router]
+enable
+conf t
+hostname RouterISP
+
+! Enlace al switch (trunk)
+interface GigabitEthernet0/0
+ no shutdown
+ no ip address
+
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ no shutdown
+
+! Enlace a Internet
+interface GigabitEthernet0/1
+ ip address 200.0.0.1 255.255.255.252
+ no shutdown
+end
+
+! Autenticacion basica para acceso al router (consola y VTY)
+username admin privilege 15 secret Admin123
+line console 0
+ login local
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+exit
+
+! ACL para que no invitados NO accedan a VLAN 10
+conf t
+ip access-list extended GUEST_TO_INSIDE
+ deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+ permit ip 192.168.20.0 0.0.0.255 any
+exit
+\end{lstlisting}
+
+\subsubsection{Configuración de Dispositivos Finales}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/ConfigPCAdmin.png}
+    \caption{Configuración del PC Administrativo (VLAN 10)}
+    \label{fig:config-pc-admin}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/ConfigPCInvitado.png}
+    \caption{Configuración del PC Invitado (VLAN 20)}
+    \label{fig:config-pc-invitado}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imagenes/ConfigServerWeb.png}
+    \caption{Configuración del Servidor Web (VLAN 10)}
+    \label{fig:config-server-web}
+\end{figure}
+
+\vspace{1cm}
+
+\subsubsection{Justificación del Diseño}
+
+\begin{itemize}
+    \item \textbf{Segmentación en VLAN 10 y VLAN 20:} Se crearon dos VLAN lógicas en el switch: \texttt{VLAN 10} (ADMIN) para el PC administrativo y el servidor web, y \texttt{VLAN 20} (INVITADOS) para el punto de acceso inalámbrico y el PC invitado. Esta separación reduce el dominio de broadcast y limita el movimiento lateral de un atacante, mitigando el riesgo asociado a la falta de segmentación identificada en la red original.
+    
+    \item \textbf{Puertos de acceso y troncal 802.1Q en el switch:} El puerto \texttt{Fa0/1} se configuró como enlace troncal 802.1Q hacia el RouterISP, permitiendo transportar simultáneamente las VLAN 10 y 20. Los puertos \texttt{Fa0/2} y \texttt{Fa0/3} se definieron como puertos de acceso en VLAN 10 para el PC Admin y el Servidor Web, mientras que \texttt{Fa0/4} se asignó a VLAN 20 para el AP de invitados. Esto garantiza que cada dispositivo se incorpore al segmento lógico que le corresponde según su función.
+    
+    \item \textbf{Subinterfaces en el RouterISP como puerta de enlace por VLAN:} Sobre la interfaz física \texttt{G0/0} se crearon las subinterfaces \texttt{G0/0.10} y \texttt{G0/0.20}, etiquetadas con \texttt{encapsulation dot1Q 10} y \texttt{dot1Q 20} respectivamente, y con direcciones IP \texttt{192.168.10.1} y \texttt{192.168.20.1}. Cada subinterfaz actúa como \emph{default gateway} de su VLAN, permitiendo el enrutamiento entre segmentos de forma controlada y preparada para aplicar políticas de filtrado.
+    
+    \item \textbf{Control de acceso de invitados mediante ACL:} Se definió la lista de acceso extendida \texttt{GUEST\_TO\_INSIDE}, que bloquea explícitamente el tráfico IP desde la red de invitados (\texttt{192.168.20.0/24}) hacia la red administrativa (\texttt{192.168.10.0/24}) y solo permite que los invitados se comuniquen con el exterior (\texttt{any}). Con esto se cumple el requisito de que los usuarios invitados puedan navegar por Internet pero no acceder a recursos internos sensibles.
+    
+    \item \textbf{Alineación con las vulnerabilidades detectadas:} En conjunto, estas decisiones de diseño abordan las vulnerabilidades iniciales: se introduce segmentación lógica de la red, se restringe el alcance de los puertos abiertos únicamente al servidor que debe exponer servicios, y se implementa un punto de control centralizado (RouterISP) donde aplicar ACLs y futuras políticas de firewall y NAT.
+\end{itemize}
+
+\vspace{2cm}
+
+\subsection{Implementación de Mecanismos de Autenticación}
+
+La red rediseñada no solo se apoya en la segmentación mediante VLAN, sino también en mecanismos de autenticación que reducen la probabilidad de accesos no autorizados tanto a nivel de medios de transmisión (WiFi) como de puertos físicos de switch y acceso a los dispositivos de red. A continuación se describe cómo se implementaron estos controles.
+
+\subsubsection{Configuración de WPA2 en Punto de Acceso}
+
+Para proteger el medio inalámbrico se configuró el punto de acceso de invitados con el protocolo \textbf{WPA2-PSK}, sustituyendo cualquier modo abierto o WEP, que se consideran inseguros. En el entorno de Packet Tracer, la configuración se realizó de la siguiente forma:
+
+\begin{itemize}
+    \item Se definió el SSID \texttt{Invitados} asociado a la VLAN 20, de modo que todo el tráfico inalámbrico de los usuarios se encamine correctamente hacia la red de invitados.
+    \item En la pestaña de configuración inalámbrica del AP se seleccionó el modo de seguridad \textbf{WPA2-PSK} con cifrado fuerte (AES) y se configuró una \emph{passphrase} robusta, evitando contraseñas triviales o por defecto.
+    \item En el equipo \textit{PC/Laptop Invitado} se instaló la interfaz inalámbrica (módulo WPC/WMP en Packet Tracer), se escaneó la red y se asoció al SSID \texttt{Invitados} introduciendo la misma clave WPA2 configurada en el AP.
+    \item Se validó la autenticación inalámbrica verificando que el PC invitado obtiene conectividad IP en la red 192.168.20.0/24 y puede comunicarse con su puerta de enlace (192.168.20.1), mientras permanece aislado de la VLAN administrativa.
+\end{itemize}
+
+Con esta configuración, el acceso al medio inalámbrico queda restringido únicamente a quienes conocen la clave WPA2, reduciendo el riesgo de que agentes externos se conecten a la red de invitados y utilicen la infraestructura como punto de entrada a la organización.
+
+
+
+\subsubsection{Autenticación en Puertos (Port Security)}
+
+Además de la protección en la red inalámbrica, se implementaron medidas básicas de autenticación a nivel de puertos del switch utilizando la funcionalidad de \textbf{Port Security} en los puertos de acceso \texttt{Fa0/2}, \texttt{Fa0/3} y \texttt{Fa0/4}. En la configuración mostrada en el listado del switch se aplican las siguientes directrices:
+
+\begin{itemize}
+    \item \textbf{Activación de Port Security:} El comando \texttt{switchport port-security} habilita el control de seguridad sobre el puerto, permitiendo limitar qué direcciones MAC pueden utilizarlo.
+    \item \textbf{Límite de direcciones MAC por puerto:} Con \texttt{switchport port-security maximum 2} se restringe el número de dispositivos que pueden conectarse simultáneamente a cada puerto, evitando que se utilicen como puntos de concentración no autorizados.
+    \item \textbf{Aprendizaje ``sticky'' de MAC:} El comando \texttt{switchport port-security mac-address sticky} permite que el switch aprenda automáticamente las direcciones MAC legítimas que se conectan por primera vez y las guarde en la configuración en ejecución, simplificando la administración.
+    \item \textbf{Acción ante violaciones:} La opción \texttt{switchport port-security violation restrict} indica que, si se detecta una MAC no autorizada o se supera el máximo configurado, el puerto restringirá el tráfico de la MAC infractora y generará registros, sin derribar completamente el puerto (\textit{shutdown}), lo que equilibra seguridad y disponibilidad.
+\end{itemize}
+
+En conjunto, estas medidas contribuyen a que los puertos de acceso solo sean utilizados por los dispositivos previstos (PC administrativo, servidor y punto de acceso), dificultando que un atacante conecte un equipo adicional al switch para realizar ataques de sniffing, suplantación o movimiento lateral dentro de la red.
+
+% \subsubsection{Justificación de las Configuraciones}
+
+% \textbf{Motivos de las decisiones tomadas:}
+% \begin{enumerate}
+%     \item \textbf{Reducir la superficie de ataque en el medio inalámbrico:} WPA2-PSK con una clave robusta impide que terceros no autorizados se conecten fácilmente al SSID de invitados, mitigando ataques oportunistas sobre la red WiFi y limitando la posibilidad de que un atacante utilice la red de invitados como punto de entrada.
+%     \item \textbf{Controlar qué dispositivos pueden usar cada puerto físico:} La aplicación de Port Security en los puertos de acceso del switch asegura que solo los equipos previstos (PC Admin, Servidor Web y AP de invitados) puedan utilizar dichos puertos, dificultando la conexión de dispositivos no autorizados y reduciendo el riesgo de sniffing o inserción de equipos maliciosos.
+%     \item \textbf{Alinear autenticación y segmentación con la mitigación de riesgos:} La combinación de autenticación en el medio inalámbrico, límites en puertos físicos y segmentación en VLAN refuerza la confidencialidad, integridad y disponibilidad de la red, al evitar accesos no autorizados y contener posibles incidentes dentro de segmentos controlados.
+% \end{enumerate}
+
+\newpage
+
+% ============================================
+% TAREA 3: HIGIENE DIGITAL (1 HORA)
+% ============================================
+\
+\section{Implementación de Medidas de Higiene Digital}
+
+La higiene digital en la Empresa XYZ se enfocó en cuatro ejes principales: contraseñas seguras, actualización de software, buenas prácticas de acceso y gestión de respaldos y segmentación.
+
+\subsection{Políticas de Contraseñas Seguras}
+
+Se configuraron contraseñas robustas para el RouterISP, el switch y los equipos críticos, usando \texttt{enable secret} y usuarios locales con combinación de mayúsculas, minúsculas, números y símbolos. Se definió una longitud mínima de 10 caracteres, cambio periódico (cada 90 días) y la prohibición de compartir credenciales o reutilizar contraseñas por defecto.
+
+\subsection{Actualización de Firmware y Software}
+
+Se estableció un procedimiento periódico para revisar y aplicar actualizaciones en router, switch, servidor web y equipos finales, aprovechando mecanismos de actualización automática cuando es posible. Antes de un cambio mayor se recomienda una prueba controlada para evitar indisponibilidades.
+
+\subsection{Buenas Prácticas de Acceso}
+
+El acceso administrativo a dispositivos de red se realiza mediante sesiones autenticadas, tiempos de expiración de sesión y límite de intentos fallidos. A nivel de usuario se fomenta el bloqueo de pantalla al ausentarse, el uso de cuentas individuales y el cierre de sesiones administrativas en el PC Admin.
+
+\subsection{Gestión de Respaldos y Segmentación}
+
+Se definieron respaldos periódicos de configuraciones de RouterISP y switch, así como de la información crítica del servidor y del PC administrativo, almacenándolos en un repositorio seguro externo. La segmentación en VLAN 10 (administrativa) y VLAN 20 (invitados), combinada con ACLs, Port Security y WPA2 en la red WiFi, limita el movimiento lateral de un atacante y facilita la recuperación ante incidentes.
+
+\newpage
+
+% ============================================
+% TAREA 4: POLÍTICA DE SEGURIDAD (1 HORA)
+% ============================================
+\section{Política de Seguridad de la Información}
+
+\subsection{Propósito y Alcance}
+
+Esta política establece las directrices mínimas de seguridad de la información para la Empresa XYZ. Aplica a todo el personal (empleados, contratistas y terceros autorizados) y a todos los recursos informáticos de la organización, incluyendo equipos de usuario, servidores, dispositivos de red y servicios accesibles desde la red interna o Internet. Su objetivo es proteger la confidencialidad, integridad y disponibilidad (CIA) de la información y reducir la probabilidad e impacto de incidentes de seguridad.
+
+\subsection{Normas de Uso de Recursos Informáticos}
+
+El uso de los equipos y sistemas de la Empresa XYZ debe estar vinculado a actividades laborales autorizadas. De forma resumida:
+
+\begin{itemize}
+    \item Está prohibido instalar software sin licencia o no autorizado, utilizar recursos para actividades ilícitas o conectar dispositivos personales a la red administrativa sin aprobación.
+    \item El acceso a Internet y al correo electrónico se utilizará con fines laborales; se evitará visitar sitios de dudosa reputación y abrir enlaces o adjuntos sospechosos.
+    \item La información confidencial (datos de clientes, información financiera, credenciales, configuraciones de red) se almacenará solo en ubicaciones autorizadas y se compartirá únicamente con personal que la necesite para su función.
+\end{itemize}
+
+Los usuarios deben bloquear o cerrar sesión al ausentarse, especialmente en el PC Administrativo y sistemas críticos.
+
+\subsection{Contraseñas y Control de Acceso}
+
+Las contraseñas empleadas en dispositivos de red, servidores y cuentas de usuario deben:
+
+\begin{itemize}
+    \item Tener al menos 10 caracteres y combinar mayúsculas, minúsculas, números y símbolos.
+    \item Cambiarse de forma periódica (por ejemplo, cada 90 días) y siempre ante sospecha de compromiso.
+    \item No compartirse ni almacenarse en lugares visibles o accesibles por terceros.
+\end{itemize}
+
+Cuando sea posible, se priorizará el uso de autenticación fuerte para accesos críticos (administración remota de dispositivos, servicios expuestos a Internet).
+
+El control de acceso se basará en el principio de mínimo privilegio:
+
+\begin{itemize}
+    \item Solo cuentas administrativas específicas podrán gestionar RouterISP, switch y puntos de acceso.
+    \item Los usuarios de la VLAN de invitados solo tendrán salida a Internet, sin acceso a la VLAN administrativa.
+    \item Se favorecerán cuentas individuales frente a cuentas genéricas, para garantizar trazabilidad de acciones.
+\end{itemize}
+
+Además, el acceso físico y lógico a dispositivos de red se protegerá mediante ubicación en áreas controladas, uso de Port Security en puertos de acceso del switch y administración remota mediante protocolos seguros como SSH.
+
+\subsection{Incidentes, Respaldos y Responsabilidades}
+
+Se considerará incidente de seguridad cualquier evento que comprometa o pueda comprometer la CIA de la información o de los sistemas (accesos no autorizados, malware, pérdida de dispositivos, fallos graves de configuración, etc.). Todo el personal deberá reportar de inmediato cualquier sospecha al responsable de TI, indicando descripción del evento, equipos afectados y momento de detección.
+
+La Empresa XYZ realizará respaldos periódicos de configuraciones de dispositivos críticos (RouterISP, switch, puntos de acceso) y de la información de negocio en el servidor web y PC administrativo. Estos respaldos se almacenarán en ubicaciones seguras separadas de los sistemas de producción, con acceso restringido, y se validarán mediante pruebas periódicas de restauración.
+
+Los usuarios finales son responsables de cumplir estas normas, proteger sus credenciales y reportar actividades sospechosas. Los administradores de sistemas y redes deberán implementar y mantener las configuraciones de seguridad (segmentación, ACL, autenticación, respaldos) y revisar periódicamente registros y estados de copia de seguridad.
+
+\subsection{Mitigación de Riesgos Identificados}
+
+Esta política consolida en un marco normativo las medidas técnicas aplicadas en la red de la Empresa XYZ. Al establecer reglas claras sobre uso aceptable, contraseñas, control de acceso, gestión de incidentes y respaldos, contribuye a mitigar las vulnerabilidades iniciales (ausencia de firewall efectivo, puertos abiertos donde no corresponde, falta de segmentación) y limita el impacto de posibles ataques. En conjunto con la segmentación en VLAN, el uso de ACL, Port Security, WPA2 y las prácticas de higiene digital descritas, se refuerza la protección de los servicios críticos de la organización y se mejora la capacidad de respuesta ante incidentes.
+
+\end{document}
